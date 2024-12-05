@@ -10,9 +10,14 @@ const Home: FC = () => {
     navigate('/dashboard')
   }
 
+  const onTitleChange = () => {
+    window.settingsAPI.changeTitle('New Title')
+  }
+
   return (
     <>
       <Button onClick={navigateToDashboardScreen}>Button</Button>
+      <Button onClick={onTitleChange}>Change Title</Button>
       {/* <button onClick={navigateToSettingsScreen}>settings</button> */}
     </>
   )

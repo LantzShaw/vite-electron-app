@@ -1,10 +1,15 @@
-export {}
+export type SettingsApi = {
+  changeTitle: (title: string) => Promise<void>
+}
+
+export type ThemeAPI = {
+  toggle: () => Promise<boolean>
+  system: () => Promise<void>
+}
 
 declare global {
   interface Window {
-    theme: {
-      toggle: () => Promise<boolean>
-      system: () => Promise<void>
-    }
+    themeAPI: ThemeAPI
+    settingsAPI: SettingsApi
   }
 }

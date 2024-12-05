@@ -13,13 +13,13 @@ const App: FC = () => {
   }
 
   const onToggleTheme = async () => {
-    const isDarkMode = await window.theme.toggle()
+    const isDarkMode = await window.themeAPI.toggle()
 
     setThemeMode(isDarkMode ? 'dark' : 'light')
   }
 
   const onResetTheme = () => {
-    window.theme.system()
+    window.themeAPI.system()
     setThemeMode('system')
   }
 

@@ -40,7 +40,7 @@
     "typescript": "~4.5.4",
     "vite": "^5.0.12"
   },
-  "keywords": [],
+  "keywords": ["electron", "react", "vite", "typescript"],
   "author": {
     "name": "Lantz",
     "email": "lantzshaw@163.com"

@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron'
 
 export default function setupThemePreload() {
-  contextBridge.exposeInMainWorld('theme', {
+  contextBridge.exposeInMainWorld('themeAPI', {
     toggle: () => ipcRenderer.invoke('dark-mode:toggle'),
     system: () => {
       // NOTE: 这里可以返回结果

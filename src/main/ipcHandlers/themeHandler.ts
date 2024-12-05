@@ -1,7 +1,7 @@
-import { IpcMain, nativeTheme } from 'electron'
+import { ipcMain, IpcMain, nativeTheme } from 'electron'
 import { log } from 'electron-log'
 
-export default function themeHandler(ipcMain: IpcMain) {
+export default function themeHandler() {
   ipcMain.handle('dark-mode:toggle', () => {
     if (nativeTheme.shouldUseDarkColors) {
       nativeTheme.themeSource = 'light'

@@ -2,8 +2,11 @@ import { BrowserWindow, app, ipcMain } from 'electron'
 import path from 'path'
 import started from 'electron-squirrel-startup'
 
-import { setupStoreHandler, setupThemeHandler } from './ipcHandlers'
+import { setupSettingsHandler, setupStoreHandler, setupThemeHandler } from './ipcHandlers'
 import { createMainWindow } from './mainWindow'
+
+const platform = process.platform // 'darwin' | 'win32' | 'linux'
+const isPackaged = app.isPackaged
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // if (require("electron-squirrel-startup")) {
@@ -20,17 +23,17 @@ const createWindow = (): void => {
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL)
+    mainWindow.webContents.openDevTools()
   } else {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`))
-
-    // const url = path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
-    // mainWindow.loadURL(url)
   }
 
-  setupStoreHandler(ipcMain)
-  setupThemeHandler(ipcMain)
+  // setupStoreHandler(ipcMain)
+  // setupThemeHandler(ipcMain)
 
-  mainWindow.webContents.openDevTools()
+  // setupStoreHandler()
+  setupThemeHandler()
+  setupSettingsHandler()
 }
 
 app.whenReady().then(() => {
